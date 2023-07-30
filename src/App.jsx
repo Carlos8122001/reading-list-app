@@ -48,8 +48,6 @@ function App() {
 
   const readingListBooksAvailable = readingListBooks.length;
 
-  console.log(data)
-
   return (
     <>
       <Select
