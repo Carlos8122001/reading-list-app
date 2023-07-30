@@ -3,18 +3,16 @@ import BookList from "./components/BookList";
 import ReadingList from "./components/ReadingList";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import { data } from "./data/bookData";
 
 function App() {
   const [books, setBooks] = useState([]);
   const [readingListBooks, setReadingListBooks] = useState([]);
   const [filter, setFilter] = useState("todos");
 
-  useEffect(() => {
-    fetch("../data.json")
-      .then((response) => response.json())
-      .then((data) => (setBooks(data.library)))
-      .catch((error) => console.error(error));
-  }, []);
+  useEffect(()=>{
+    setBooks(data)
+  },[])
 
   useEffect(() => {
     const storereadingListBooks = JSON.parse(
@@ -49,6 +47,8 @@ function App() {
   const booksAvailable = filterBookList.length;
 
   const readingListBooksAvailable = readingListBooks.length;
+
+  console.log(data)
 
   return (
     <>
