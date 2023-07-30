@@ -10,9 +10,9 @@ function App() {
   const [filter, setFilter] = useState("todos");
 
   useEffect(() => {
-    fetch("../src/data/data.json")
+    fetch("src/data/data.json")
       .then((response) => response.json())
-      .then((data) => setBooks(data))
+      .then((data) => (setBooks(data.library)))
       .catch((error) => console.error(error));
   }, []);
 
