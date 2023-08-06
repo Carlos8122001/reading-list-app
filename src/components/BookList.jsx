@@ -1,8 +1,5 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Book from "./Book";
-import Typography from "@mui/material/Typography";
+import Book from "../components/Book"
 
 export default function BookList({
   filterBookList,
@@ -11,26 +8,16 @@ export default function BookList({
 }) {
   return (
     <>
-      <Grid
-        container
-        padding={1}
-        rowSpacing={2}
-        columnSpacing={3}
-        sx={{
-          overflow: "hidden",
-          width: "700px",
-          marginLeft:"50px"
-        }}
-      >
-        <Typography variant="h3" fontWeight={"bold"} margin={"20px"}>
+      <div>
+        <h3>
           {booksAvailable} Libros disponibles{" "}
-        </Typography>
+        </h3>
         {filterBookList.map((book, index) => (
-          <Grid key={index} item>
+          <div key={index} >
             <Book book={book} addListReading={addListReading} />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
     </>
   );
 }

@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import BookList from "./components/BookList";
 import ReadingList from "./components/ReadingList";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import { data } from "./data/bookData";
+import FilterBook from "./components/FilterBook";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -50,22 +49,7 @@ function App() {
 
   return (
     <>
-      <Select
-        name="gender"
-        id="gener"
-        value={filter}
-        onChange={(event) => {
-          setFilter(event.target.value);
-        }}
-        variant="outlined"
-        sx={{ margin: 2, width: "200px" }}
-      >
-        <MenuItem value="todos">Todos</MenuItem>
-        <MenuItem value="Fantasía">Fantasía</MenuItem>
-        <MenuItem value="Ciencia ficción">Ciencia ficción</MenuItem>
-        <MenuItem value="Zombies">Zombies</MenuItem>
-        <MenuItem value="Terror">Terror</MenuItem>
-      </Select>
+      <FilterBook filter={filter} setFilter={setFilter}/>
 
       <BookList
         filterBookList={filterBookList}
