@@ -3,15 +3,33 @@ import BookList from "./components/BookList";
 import ReadingList from "./components/ReadingList";
 import { data } from "./data/bookData";
 import FilterBook from "./components/FilterBook";
+import {
+  Button,
+  Heading,
+  Progress,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 
 function App() {
   const [books, setBooks] = useState([]);
   const [readingListBooks, setReadingListBooks] = useState([]);
   const [filter, setFilter] = useState("todos");
+  const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
-    setBooks(data)
-  },[])
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setBooks(data);
+      setLoading(false);
+      console.log("carga finalizada");
+    }, 1700);
+  }, []);
 
   useEffect(() => {
     const storereadingListBooks = JSON.parse(
@@ -47,22 +65,57 @@ function App() {
 
   const readingListBooksAvailable = readingListBooks.length;
 
+  const { colorMode, toggleColorMode } = useColorMode()
+
   return (
     <>
-      <FilterBook filter={filter} setFilter={setFilter}/>
-
-      <BookList
-        filterBookList={filterBookList}
-        addListReading={addListReading}
-        booksAvailable={booksAvailable}
-        deleteListReading={deleteListReading}
-      />
-
-      <ReadingList
-        readingListBooks={readingListBooks}
-        deleteListReading={deleteListReading}
-        readingListBooksAvailable={readingListBooksAvailable}
-      />
+      <Heading as="h1" size="3xl" noOfLines={1} textAlign={"center"} margin={3}>
+        Libreria
+      </Heading>
+      {loading ? (
+        <Progress size="xs" isIndeterminate />
+      ) : (
+        <Tabs
+          isFitted
+          variant="enclosed"
+          width={"container"}
+          height={"full"}
+          justifyContent={"center"}
+          margin={5}
+          rounded={10}
+        >
+          <FilterBook filter={filter} setFilter={setFilter} />
+          <TabList mb="1em">
+            <Tab>
+              <Heading size={"md"}>
+                Libros disponibles ({booksAvailable})
+              </Heading>
+            </Tab>
+            <Tab>
+              <Heading size={"md"}>
+                Lista de lectura ({readingListBooksAvailable})
+              </Heading>
+            </Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <BookList
+                filterBookList={filterBookList}
+                addListReading={addListReading}
+                booksAvailable={booksAvailable}
+                deleteListReading={deleteListReading}
+              />
+            </TabPanel>
+            <TabPanel>
+              <ReadingList
+                readingListBooks={readingListBooks}
+                deleteListReading={deleteListReading}
+                readingListBooksAvailable={readingListBooksAvailable}
+              />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      )}
     </>
   );
 }

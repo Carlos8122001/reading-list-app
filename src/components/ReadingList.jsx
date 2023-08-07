@@ -1,29 +1,33 @@
 import React from "react";
 import BooksReading from "./BooksReading";
+import { Grid, Heading } from "@chakra-ui/react";
+import { WarningTwoIcon } from "@chakra-ui/icons";
 
 export default function ReadingList({
   readingListBooks,
   deleteListReading,
-  readingListBooksAvailable,
 }) {
   return (
     <>
-      <div>
-        <div>
-          <h4>Lista de lectura</h4>
-          <h6>Cantidad {readingListBooksAvailable}</h6>
-          <div>
-            {readingListBooks.map((book, index) => (
-              <div key={index} item>
-                <BooksReading
-                  book={book}
-                  deleteListReading={deleteListReading}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {readingListBooks.length === 0 ? (
+        <Heading size={"md"} textAlign={"center"} >
+          No hay libros disponibles <WarningTwoIcon />
+        </Heading>
+      ) : (
+        ""
+      )}
+      <Grid
+        templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
+        gap={5}
+        rowGap={5}
+        padding={1}
+        justifyItems={"center"}
+        textAlign={"center"}
+      >
+        {readingListBooks.map((book, index) => (
+          <BooksReading key={index} book={book} deleteListReading={deleteListReading} />
+        ))}
+      </Grid>
     </>
   );
 }

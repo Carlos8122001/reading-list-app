@@ -1,4 +1,4 @@
-import React from "react";
+import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
@@ -9,12 +9,12 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import React from "react";
 
-export default function BooksReading({ book, deleteListReading }) {
+export default function Book({ book, addListReading }) {
   return (
     <>
-      <Card size={"sm"} justify={"center"} alignItems={"center"}>
+      <Card size={"sm"}  justify={"center"} alignItems={"center"} variant={"filled"}>
         <CardBody>
           <Image
             src={book.book.cover}
@@ -23,7 +23,7 @@ export default function BooksReading({ book, deleteListReading }) {
             maxH={"400px"}
             borderRadius="lg"
           />
-          <Stack mt="6" spacing="3" mb={6}>
+          <Stack mt="6" mb={6} spacing="0">
             <Heading size="md">{book.book.title}</Heading>
             <Text fontSize="2xls" color={"blue.900"} fontWeight={"bold"}>
               Género {book.book.genre}
@@ -33,14 +33,14 @@ export default function BooksReading({ book, deleteListReading }) {
           </Stack>
           <Button
             variant="solid"
-            colorScheme="red"
+            colorScheme="blue"
             size={"lg"}
             onClick={() => {
-              deleteListReading(book);
+              addListReading(book);
             }}
           >
-            Eliminar
-            <DeleteIcon ml={1} />
+            Agregar
+            <PlusSquareIcon ml={1} />
           </Button>
         </CardBody>
       </Card>
