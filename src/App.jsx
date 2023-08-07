@@ -7,6 +7,7 @@ import {
   Button,
   Heading,
   Progress,
+  Stack,
   Tab,
   TabList,
   TabPanel,
@@ -65,7 +66,7 @@ function App() {
 
   const readingListBooksAvailable = readingListBooks.length;
 
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
@@ -75,46 +76,51 @@ function App() {
       {loading ? (
         <Progress size="xs" isIndeterminate />
       ) : (
-        <Tabs
-          isFitted
-          variant="enclosed"
-          width={"container"}
-          height={"full"}
-          justifyContent={"center"}
-          margin={5}
-          rounded={10}
-        >
-          <FilterBook filter={filter} setFilter={setFilter} />
-          <TabList mb="1em">
-            <Tab>
-              <Heading size={"md"}>
-                Libros disponibles ({booksAvailable})
-              </Heading>
-            </Tab>
-            <Tab>
-              <Heading size={"md"}>
-                Lista de lectura ({readingListBooksAvailable})
-              </Heading>
-            </Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <BookList
-                filterBookList={filterBookList}
-                addListReading={addListReading}
-                booksAvailable={booksAvailable}
-                deleteListReading={deleteListReading}
-              />
-            </TabPanel>
-            <TabPanel>
-              <ReadingList
-                readingListBooks={readingListBooks}
-                deleteListReading={deleteListReading}
-                readingListBooksAvailable={readingListBooksAvailable}
-              />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+        <>
+          <Tabs
+            isFitted
+            variant="enclosed"
+            width={"container"}
+            height={"full"}
+            justifyContent={"center"}
+            margin={5}
+            rounded={10}
+          >
+            <FilterBook filter={filter} setFilter={setFilter} />
+            <TabList mb="1em">
+              <Tab>
+                <Heading size={"md"}>
+                  Libros disponibles ({booksAvailable})
+                </Heading>
+              </Tab>
+              <Tab>
+                <Heading size={"md"}>
+                  Lista de lectura ({readingListBooksAvailable})
+                </Heading>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <BookList
+                  filterBookList={filterBookList}
+                  addListReading={addListReading}
+                  booksAvailable={booksAvailable}
+                  deleteListReading={deleteListReading}
+                />
+              </TabPanel>
+              <TabPanel>
+                <ReadingList
+                  readingListBooks={readingListBooks}
+                  deleteListReading={deleteListReading}
+                  readingListBooksAvailable={readingListBooksAvailable}
+                />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+          <Stack spacing={3} m={2}>
+            <Text>© 2023 – Creation of Carlos Velásquez</Text>
+          </Stack>
+        </>
       )}
     </>
   );
