@@ -4,7 +4,6 @@ import ReadingList from "./components/ReadingList";
 import { data } from "./data/bookData";
 import FilterBook from "./components/FilterBook";
 import {
-  Button,
   Heading,
   Progress,
   Stack,
@@ -30,16 +29,22 @@ function App() {
     setTimeout(() => {
       setBooks(data);
       setLoading(false);
-    }, 1700);
+    }, 1000);
   }, []);
 
+  const getLocalStorage = () => {
+    window.addEventListener("storage", () => {
+      const storereadingListBooks = JSON.parse(
+        localStorage.getItem("KEY_READING_LIST")
+      );
+      if (storereadingListBooks) {
+        setReadingListBooks(storereadingListBooks);
+      }
+    });
+  };
+
   useEffect(() => {
-    const storereadingListBooks = JSON.parse(
-      localStorage.getItem("KEY_READING_LIST")
-    );
-    if (storereadingListBooks) {
-      setReadingListBooks(storereadingListBooks);
-    }
+    getLocalStorage();
   }, []);
 
   useEffect(() => {
