@@ -15,7 +15,9 @@ import {
   Tabs,
   Text,
   useColorMode,
+  IconButton,
 } from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -28,7 +30,6 @@ function App() {
     setTimeout(() => {
       setBooks(data);
       setLoading(false);
-      console.log("carga finalizada");
     }, 1700);
   }, []);
 
@@ -70,6 +71,14 @@ function App() {
 
   return (
     <>
+      <IconButton
+        aria-label="Search database"
+        icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+        onClick={toggleColorMode}
+        margin={4}
+        position={"absolute"}
+        right={0}
+      />
       <Heading as="h1" size="3xl" noOfLines={1} textAlign={"center"} margin={3}>
         Libreria
       </Heading>
