@@ -32,24 +32,49 @@ function App() {
     }, 1000);
   }, []);
 
-  const getLocalStorage = () => {
-    window.addEventListener("storage", () => {
-      const storereadingListBooks = JSON.parse(
-        localStorage.getItem("KEY_READING_LIST")
-      );
-      if (storereadingListBooks) {
-        setReadingListBooks(storereadingListBooks);
+  const getReadinListLocalStorage = () => {
+    window.addEventListener("storage", (event) => {
+
+      if(event.key === "KEY_READING_LIST"){
+        const storereadingListBooks = JSON.parse(
+          localStorage.getItem("KEY_READING_LIST")
+        );
+
+        if (storereadingListBooks) {
+          setReadingListBooks(storereadingListBooks);
+        }
+      }
+    });
+  };
+
+  const getListBookLocalStorage = () => {
+    window.addEventListener("storage", (event) => {
+
+      if(event.key === "KEY_BOOK_LIST"){
+        const storageListBooks = JSON.parse(
+          localStorage.getItem("KEY_BOOK_LIST")
+        );
+
+        if (storageListBooks) {
+          setBooks(storageListBooks);
+        }
       }
     });
   };
 
   useEffect(() => {
-    getLocalStorage();
+    getListBookLocalStorage();
+    getReadinListLocalStorage();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("KEY_BOOK_LIST", JSON.stringify(books));
+  }, [books]);
 
   useEffect(() => {
     localStorage.setItem("KEY_READING_LIST", JSON.stringify(readingListBooks));
   }, [readingListBooks]);
+
 
   const addListReading = (book) => {
     const newValues = filterBookList.filter((element) => element !== book);
