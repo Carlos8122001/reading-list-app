@@ -1,6 +1,12 @@
 import App from "../App";
-import { describe, expect, test } from "vitest";
+import { beforeAll, describe, expect, test, vi } from "vitest";
 import { render,screen } from "@testing-library/react";
+import { bookDataMockTwoBook } from "./mocks/bookDataMocks";
+
+beforeAll(() => {
+	const mock = vi.fn();
+	mock.mockImplementation(bookDataMockTwoBook);
+});
 
 describe("render App list Component", () => {
     test("should display App Book", () => {
