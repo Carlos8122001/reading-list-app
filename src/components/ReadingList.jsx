@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import BooksReading from "./BooksReading";
 import { Grid, Heading } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";

@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# test reports and coverage directory
+/tests
+.reports
+__reports__
+coverage

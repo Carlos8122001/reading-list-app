@@ -1,9 +1,8 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   Heading,
   Image,
   Stack,

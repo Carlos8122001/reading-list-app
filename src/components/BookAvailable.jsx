@@ -1,15 +1,14 @@
+/* eslint-disable react/prop-types */
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   Heading,
   Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
 
 export default function Book({ book, addListReading }) {
   return (
@@ -35,6 +34,7 @@ export default function Book({ book, addListReading }) {
             variant="solid"
             colorScheme="blue"
             size={"lg"}
+            name="agregar"
             onClick={() => {
               addListReading(book);
             }}

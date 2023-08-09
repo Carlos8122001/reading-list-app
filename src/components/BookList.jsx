@@ -1,9 +1,10 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import Book from "../components/BookAvailable";
 import { Grid, Heading } from "@chakra-ui/react";
 import { WarningTwoIcon } from "@chakra-ui/icons";
 
 export default function BookList({ filterBookList, addListReading }) {
+  console.log(filterBookList.length)
   return (
     <>
       {filterBookList.length === 0 ? (
