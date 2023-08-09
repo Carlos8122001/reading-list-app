@@ -1,10 +1,6 @@
 # 01 - Desarrollo de una Aplicación de Lista de Libros
 
 El objetivo de esta prueba es diseñar e implementar una pequeña aplicación web de lista de libros utilizando las herramientas de tu elección.
-
-- [¿Cómo puedo participar?](https://github.com/midudev/pruebas-tecnicas#c%C3%B3mo-participar)
-- **La prueba está abierta a revisión hasta el 27 de julio de 2023**
-- Prueba basada en [esta prueba real para Juniors](https://discord.com/channels/741237973663612969/848944161448132628/1127729621744500806).
  
 Este proyecto busca probar tus habilidades en el manejo de interacciones con el usuario, gestión del estado, filtrado de datos y la estructuración del código.
 ![Sin título-2023-03-24-0943 (1)](https://github.com/midudev/pruebas-tecnicas/assets/1561955/a829323d-07e6-4937-91c6-5498481148c5)
@@ -61,23 +57,3 @@ Usa el archivo `books.json` para obtener los datos de los libros. Puedes añadir
 - Añade un nuevo filtro para filtrar los libros por número de páginas.
 - Permitir la reorganización de los libros en la lista de lectura por prioridad.
 - Haz que tu diseño sea responsive.
-
-## Entrevista
-
-Si pasas a la siguiente fase, te pediremos que hagas una entrevista con nosotros. Durante la entrevista, te pediremos que expliques tu código y que hagas algunos cambios en el mismo.
-
-- Nos tendrás que explicar el código que has escrito y las decisiones que has tomado.
-- Haremos cambios en el JSON y tendrás que adaptar el código en vivo.
-- Añadiremos un nuevo filtro a la aplicación y tendrás que implementarlo.
-
-Buena suerte y ¡diviértete programando!
-
-## Referencias
-
-- Diseño de Josh W. Comeau para una aplicación de libros pendientes de leer: https://twitter.com/JoshWComeau/status/1678893330480898049
-
-- Dribbble con rediseño de Goodreads: https://dribbble.com/shots/2523654-Books-listing-page-goodreads
-
-- Concepto de uso de arrastrar libros: https://dribbble.com/shots/19351938-Mybooks-Page-Board
-
-- Concepto de landing para una aplicación de libros: https://dribbble.com/shots/16279204-Book-Web-Store-Concept
