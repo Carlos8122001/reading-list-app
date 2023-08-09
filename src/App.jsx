@@ -143,15 +143,12 @@ function App() {
                 <BookList
                   filterBookList={filterBookList}
                   addListReading={addListReading}
-                  booksAvailable={booksAvailable}
-                  deleteListReading={deleteListReading}
                 />
               </TabPanel>
               <TabPanel>
                 <ReadingList
                   readingListBooks={readingListBooks}
                   deleteListReading={deleteListReading}
-                  readingListBooksAvailable={readingListBooksAvailable}
                 />
               </TabPanel>
             </TabPanels>
